@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Breeding Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Dog Breeding Simulator</h1>
+            <div class="stats-bar">
+                <div class="stat">Day: <span id="day-counter">1</span></div>
+                <div class="stat">Money: $<span id="money">2500</span></div>
+                <div class="stat">Prestige: <span id="prestige">0</span></div>
+                <button id="speed-btn">Speed: x1</button>
+            </div>
+        </header>
+
+        <nav>
+            <button id="kennel-btn" class="active">Kennel</button>
+            <button id="breeding-btn">Breeding</button>
+            <button id="show-btn">Show Ring</button>
+            <button id="market-btn">Market</button>
+        </nav>
+
+        <main>
+            <!-- Kennel Screen -->
+            <section id="kennel-screen" class="screen active">
+                <h2>Kennel Management</h2>
+                <div class="daily-actions">
+                    <button id="feed-standard" class="action-btn">Feed Standard ($10)</button>
+                    <button id="feed-premium" class="action-btn">Feed Premium ($25)</button>
+                    <button id="walk" class="action-btn">Walk (Free)</button>
+                    <button id="treat-defect" class="action-btn">Treat Defect ($50-$200)</button>
+                </div>
+                <div id="dogs-container"></div>
+            </section>
+
+            <!-- Breeding Screen -->
+            <section id="breeding-screen" class="screen">
+                <h2>Breeding Center</h2>
+                <div id="breeding-pair-selector">
+                    <div class="selector">
+                        <label>Select Male:</label>
+                        <select id="male-select"></select>
+                    </div>
+                    <div class="selector">
+                        <label>Select Female:</label>
+                        <select id="female-select"></select>
+                    </div>
+                    <button id="breed-btn">Breed Dogs</button>
+                </div>
+                <div id="litter-container"></div>
+            </section>
+
+            <!-- Show Ring Screen -->
+            <section id="show-screen" class="screen">
+                <h2>Show Ring</h2>
+                <div id="show-dog-selector">
+                    <label>Select Dog for Show:</label>
+                    <select id="show-dog-select"></select>
+                    <button id="enter-show-btn">Enter Show</button>
+                </div>
+                <div id="show-content" style="display:none;">
+                    <div class="show-info">
+                        <h3>Beauty Score: <span id="beauty-score">0</span></h3>
+                        <p>Defects: <span id="defect-count">0</span></p>
+                    </div>
+                    <div class="mini-game">
+                        <h3>Skill Score Challenge</h3>
+                        <div class="gauge-container">
+                            <div class="gauge">
+                                <div class="zone red" style="width: 20%;"></div>
+                                <div class="zone yellow" style="width: 30%;"></div>
+                                <div class="zone green" style="width: 20%;"></div>
+                                <div class="zone yellow" style="width: 30%;"></div>
+                                <div class="zone red" style="width: 20%;"></div>
+                            </div>
+                            <div class="pointer" id="pointer"></div>
+                        </div>
+                        <button id="skill-click-btn">Click when in Green!</button>
+                        <div class="attempts">
+                            <span>Attempts: </span>
+                            <span id="attempt-count">0</span>/3
+                        </div>
+                        <div class="skill-result">
+                            <p>Skill Score: <span id="current-skill">0</span></p>
+                        </div>
+                    </div>
+                    <button id="finish-show-btn" style="display:none;">Finish Show</button>
+                </div>
+            </section>
+
+            <!-- Market Screen -->
+            <section id="market-screen" class="screen">
+                <h2>Dog Market</h2>
+                <div class="market-controls">
+                    <button id="refresh-market">Refresh Market ($100)</button>
+                    <p>Last updated: Day <span id="market-last-update">1</span></p>
+                </div>
+                <div id="market-listings"></div>
+            </section>
+        </main>
+
+        <!-- Dog Detail Modal -->
+        <div id="dog-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="dog-details"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
